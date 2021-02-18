@@ -1,13 +1,36 @@
-import logo from './logo.svg';
-// import './App.css';
-import Accordion from "./components/Accordion";
+import React, { Component } from "react";
+// import logo from './logo.svg';
+import './App.css';
+import Counter from './components/Counter'
 
-function App() {
-  return (
-    <div className="App">
-      <Accordion heading="Heading">Demo children lesson</Accordion>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super();
+
+    this.state={
+      showCounter: true
+    };
+  }
+
+  componentDidMount(){
+    console.log('App updated');
+  }
+
+  removeCounter(){
+    this.setState({
+      showCounter: false
+    });
+  }
+  
+  render() {
+    console.log('App render');
+    return (
+      <div className="App">
+        <button onClick={() => this.removeCounter()}>Remove counter</button>
+        { this.state.showCounter && <Counter /> }
+      </div>
+    );
+  }
 }
 
 export default App;
